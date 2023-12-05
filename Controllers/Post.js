@@ -22,6 +22,21 @@ const addPost = async (req, h) => {
     }
 };
 
+const getUserByPost = async (req, h) => {
+    try {
+        let data = await models.Post.findAll({
+            include: [{
+                model: models.User,
+                as: 'user'
+            }]
+        })
+        return h.response({ message: "Successfully retrieved post", data: data }).code(200);
+    } catch (error) {
+        console.error(error);
+        return h.response({ message: "Something went wrong", error }).code(500);
+    }
+}
 module.exports = {
-    addPost
+    addPost,
+    getUserByPost
 }

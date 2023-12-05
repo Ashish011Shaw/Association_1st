@@ -60,6 +60,7 @@ const getUsersWithPosts = async (req, h) => {
             include: [{
                 model: models.Post,
                 as: 'posts', // This should match the alias used in the User model
+                // attributes: ['title', 'content', 'userId']
             }],
         });
 
@@ -69,6 +70,7 @@ const getUsersWithPosts = async (req, h) => {
         return h.response({ message: "Something went wrong", error }).code(500);
     }
 };
+
 
 
 module.exports = {
