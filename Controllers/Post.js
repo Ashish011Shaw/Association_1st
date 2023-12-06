@@ -82,7 +82,7 @@ const editPost = async (req, h) => {
             return h.response({ message: "Successfully edited post", data: updatedData }).code(200);
 
         }
-        // return h.response({ message: "Successfully edited post", data: updatedData }).code(200);
+
     } catch (error) {
         console.error(error);
         return h.response({ message: "Something went wrong", error }).code(500);
