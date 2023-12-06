@@ -45,8 +45,3 @@ module.exports = {
 
 
 
-
-// userId: {
-//   foreignKey: true,
-//   type: Sequelize.INTEGER
-// },
