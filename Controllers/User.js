@@ -71,10 +71,35 @@ const getUsersWithPosts = async (req, h) => {
     }
 };
 
+// get a single user by id 
+const getUserById = async (req, h) => {
+    try {
+        const { id } = req.params;
+
+        const singleUser = await models.User.findByPk(id, {
+
+            include: [{
+                model: models.Post,
+                as: 'posts',
+                // attributes:['title','content','userId']
+            }]
+        });
+        if (!singleUser) {
+            return h.response({ message: "User not found" }).code(404);
+        }
+        return h.response({ message: "Successfully retrieved user", data: singleUser }).code(200);
+
+    } catch (error) {
+        console.log(error);
+        return h.response({ message: "Error getting user", error });
+    }
+}
 
 
 module.exports = {
     signUp,
     getUsersWithPosts,
-    deleteUser
+    deleteUser,
+    getUserById
 }
+

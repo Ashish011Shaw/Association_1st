@@ -14,5 +14,10 @@ module.exports = [{
     method: 'DELETE',
     path: '/users/{id}',
     handler: usersControllers.deleteUser
+},
+{
+    method: 'GET',
+    path: '/users/{id}',
+    handler: usersControllers.getUserById
 }
 ]
